@@ -1,24 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4gS-Q3-8lC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Movie Database View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MovieDatabaseViewController" customModule="MovieDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search movies by title/actor/genre/director" translatesAutoresizingMaskIntoConstraints="NO" id="gSN-9o-vBW">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tvy-km-tB6">
+                                <rect key="frame" x="0.0" y="159" width="393" height="659"/>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pzt-1E-fvO">
+                                <rect key="frame" x="178" y="470" width="37" height="37"/>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tvy-km-tB6" firstAttribute="top" secondItem="gSN-9o-vBW" secondAttribute="bottom" id="2Sh-cn-DWB"/>
+                            <constraint firstItem="pzt-1E-fvO" firstAttribute="centerX" secondItem="Tvy-km-tB6" secondAttribute="centerX" id="5Wo-cn-bnl"/>
+                            <constraint firstItem="gSN-9o-vBW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6H9-0d-Lf8"/>
+                            <constraint firstItem="gSN-9o-vBW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CEP-Qb-MTx"/>
+                            <constraint firstItem="Tvy-km-tB6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="NaC-pv-6ll"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tvy-km-tB6" secondAttribute="bottom" id="fFo-lF-Yjy"/>
+                            <constraint firstItem="pzt-1E-fvO" firstAttribute="centerY" secondItem="Tvy-km-tB6" secondAttribute="centerY" id="fow-Pz-gMs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="Tvy-km-tB6" secondAttribute="leading" id="p3g-qO-caR"/>
+                            <constraint firstItem="gSN-9o-vBW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tjw-Z9-PHr"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="E4z-l4-nYG"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="pzt-1E-fvO" id="ybz-MY-3i5"/>
+                        <outlet property="searchBar" destination="gSN-9o-vBW" id="t0Y-u1-jN8"/>
+                        <outlet property="tableView" destination="Tvy-km-tB6" id="rYv-DR-v8f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1066.4122137404579" y="3.5211267605633805"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kaY-MC-O2f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4gS-Q3-8lC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3h-GH-zQN">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tbt-3r-qN9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-6R-pZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
